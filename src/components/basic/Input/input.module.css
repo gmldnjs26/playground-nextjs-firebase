@@ -1,0 +1,31 @@
+/* Input.module.css */
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 2px;
+}
+
+.input {
+  padding: 10px 12px;
+  font-size: 16px;
+  border: 1px solid var(--light-gray);
+  border-radius: 4px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 5px var(--secondary-color);
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--gray);
+}

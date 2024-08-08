@@ -1,0 +1,14 @@
+.signInPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.linkButton {
+  color: var(--primary-color);
+}
+
+.linkButton:hover {
+  opacity: 0.6;
+}
