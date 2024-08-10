@@ -1,0 +1,13 @@
+.formImageContainer {
+  position: relative;
+  cursor: pointer;
+}
+
+.hiddenInput {
+  display: none;
+}
+
+.image {
+  border-radius: 50%;
+  object-fit: cover;
+}

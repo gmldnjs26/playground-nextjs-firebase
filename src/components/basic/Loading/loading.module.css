@@ -1,0 +1,14 @@
+@keyframes rotate {
+  0% {
+    rotate: 0;
+  }
+  50% {
+    rotate: 180deg;
+  }
+  100% {
+    rotate: 360deg;
+  }
+}
+.loading {
+  animation: rotate 0.5s infinite linear;
+}

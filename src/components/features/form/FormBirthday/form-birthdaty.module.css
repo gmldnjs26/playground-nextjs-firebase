@@ -1,0 +1,19 @@
+/* FormBirthday.module.css */
+
+.birthdayContainer {
+  width: 100%;
+}
+
+.inputWrapper {
+  display: grid;
+  grid-template-columns: 140px 70px 70px;
+  width: 100%;
+  gap: 8px;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 2px;
+}

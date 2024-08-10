@@ -15,7 +15,7 @@ export default function Input({
   label,
   placeholder,
   value,
-  width, // Destructure the width prop
+  width,
   onChange,
 }: InputProps) {
   const inputStyle = {

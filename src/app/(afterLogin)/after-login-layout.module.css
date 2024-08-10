@@ -3,3 +3,10 @@
   flex-direction: column;
   min-height: 100dvh;
 }
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100dvh;
+}

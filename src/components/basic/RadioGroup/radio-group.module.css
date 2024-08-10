@@ -1,0 +1,60 @@
+/* RadioGroup.module.css */
+
+.radioGroup {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  padding-left: 28px;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  color: var(--secondary-color);
+}
+
+.inputWrapper input {
+  display: none;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 24px;
+  width: 24px;
+  background-color: #eee;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.inputWrapper:hover .checkmark {
+  background-color: var(--secondary-color);
+}
+
+.inputWrapper input:checked ~ .checkmark {
+  background-color: var(--primary-color);
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.inputWrapper input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.inputWrapper .checkmark:after {
+  justify-self: center;
+  align-self: center;
+  inset: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: white;
+}

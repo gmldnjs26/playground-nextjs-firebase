@@ -2,7 +2,7 @@
 
 import { auth } from "@/plugins/firebase";
 import { onAuthStateChanged, User } from "firebase/auth";
-import { redirect, useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   createContext,
   ReactNode,
@@ -21,8 +21,11 @@ const AuthContext = createContext<AuthContext>({
   loading: true,
 });
 
+const noRedirectPaths = ["/auth/sign-in", "/auth/sign-up"];
+
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const router = useRouter();
+  const pathName = usePathname();
 
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
@@ -32,7 +35,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       setUser(fbUser);
       setLoading(false);
 
-      if (!fbUser) {
+      if (!fbUser && !noRedirectPaths.includes(pathName)) {
         router.push("/auth/sign-in");
       }
     });
