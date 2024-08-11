@@ -1,12 +1,19 @@
 import React, { useState } from "react";
-import styles from "./form-birthdaty.module.css";
+
 import Input from "@/components/basic/Input";
+import { IDate } from "@/types/common";
+
+import styles from "./form-birthday.module.css";
 
 type FormBirthdayProps = {
-  onChange: (birthday: string) => void;
+  errorMessage?: string;
+  onChange: (birthday?: IDate) => void;
 };
 
-export default function FormBirthday({ onChange }: FormBirthdayProps) {
+export default function FormBirthday({
+  onChange,
+  errorMessage,
+}: FormBirthdayProps) {
   const [year, setYear] = useState("");
   const [month, setMonth] = useState("");
   const [day, setDay] = useState("");
@@ -27,8 +34,10 @@ export default function FormBirthday({ onChange }: FormBirthdayProps) {
   };
 
   const triggerOnChange = (y: string, m: string, d: string) => {
-    if (y && m && d) {
-      onChange(`${y}-${m.padStart(2, "0")}-${d.padStart(2, "0")}`);
+    if (y.length === 4 && m.length >= 1 && d.length >= 1) {
+      onChange({ year: +y, month: +m, day: +d });
+    } else {
+      onChange();
     }
   };
 
@@ -40,6 +49,7 @@ export default function FormBirthday({ onChange }: FormBirthdayProps) {
           type="text"
           value={year}
           placeholder="YYYY"
+          maxLength={4}
           width="100%"
           onChange={handleYearChange}
         />
@@ -47,6 +57,7 @@ export default function FormBirthday({ onChange }: FormBirthdayProps) {
           type="text"
           value={month}
           placeholder="MM"
+          maxLength={2}
           width="100%"
           onChange={handleMonthChange}
         />
@@ -54,10 +65,14 @@ export default function FormBirthday({ onChange }: FormBirthdayProps) {
           type="text"
           value={day}
           placeholder="DD"
+          maxLength={2}
           width="100%"
           onChange={handleDayChange}
         />
       </div>
+      {errorMessage && (
+        <div className={styles.errorMessage}>{errorMessage}</div>
+      )}
     </div>
   );
 }

@@ -20,6 +20,10 @@
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+.input.error {
+  border-color: var(--error-color);
+}
+
 .input:focus {
   border-color: var(--primary-color);
   box-shadow: 0 0 5px var(--secondary-color);
@@ -28,4 +32,10 @@
 
 .input::placeholder {
   color: var(--gray);
+}
+
+.errorMessage {
+  font-size: 14px;
+  color: var(--error-color);
+  margin-top: 2px;
 }

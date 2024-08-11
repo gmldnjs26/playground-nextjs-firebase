@@ -3,12 +3,12 @@ import Image from "next/image";
 import { ChangeEvent, useRef, useState } from "react";
 import styles from "./form-image.module.css";
 
-interface FormImageProps {
+type FormImageProps = {
   className?: string;
   value?: File;
   defaultSrc?: string;
   onChange: (value: File) => void;
-}
+};
 
 export default function FormImage({
   className = "",

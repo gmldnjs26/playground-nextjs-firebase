@@ -1,0 +1,60 @@
+/* Checkbox.module.css */
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkboxInput {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background-color: #eee;
+  border-radius: 4px;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.checkbox:hover .checkmark {
+  background-color: var(--light-gray);
+}
+
+.checkboxInput:checked ~ .checkmark {
+  background-color: var(--primary-color);
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.checkboxInput:checked ~ .checkmark:after {
+  display: block;
+}
+
+.checkboxInput:checked ~ .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 6px;
+  height: 12px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.label {
+  margin-left: 10px;
+  font-size: 16px;
+  color: #333;
+}

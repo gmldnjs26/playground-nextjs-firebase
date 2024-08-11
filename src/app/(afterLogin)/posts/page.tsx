@@ -1,3 +1,9 @@
+"use client";
+
+import { useAuth } from "@/app/auth-provider";
+
 export default function PostsPage() {
-  return <div>posts page</div>;
+  const auth = useAuth();
+
+  return <div>{auth.user?.email}</div>;
 }

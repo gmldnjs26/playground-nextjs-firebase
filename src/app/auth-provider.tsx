@@ -1,7 +1,7 @@
 "use client";
 
-import { auth } from "@/plugins/firebase";
 import { onAuthStateChanged, User } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
 import { usePathname, useRouter } from "next/navigation";
 import {
   createContext,
@@ -11,8 +11,11 @@ import {
   useState,
 } from "react";
 
+import { auth, firestore } from "@/plugins/firebase";
+import { IUser } from "@/types/user";
+
 type AuthContext = {
-  user: User | null;
+  user: IUser | null;
   loading: boolean;
 };
 
@@ -27,17 +30,24 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const router = useRouter();
   const pathName = usePathname();
 
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<IUser | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const authorize = onAuthStateChanged(auth, (fbUser) => {
-      setUser(fbUser);
-      setLoading(false);
+    const authorize = onAuthStateChanged(auth, async (fbUser) => {
+      if (fbUser) {
+        const userDoc = doc(firestore, "users", fbUser.uid);
+        const userDocSnap = await getDoc(userDoc);
+        if (userDocSnap.exists()) {
+          setUser({ uid: fbUser.uid, ...userDocSnap.data() } as IUser);
+        }
+      }
 
       if (!fbUser && !noRedirectPaths.includes(pathName)) {
         router.push("/auth/sign-in");
       }
+
+      setLoading(false);
     });
     return () => authorize();
   });

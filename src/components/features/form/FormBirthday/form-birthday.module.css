@@ -17,3 +17,9 @@
   color: #555;
   margin-bottom: 2px;
 }
+
+.errorMessage {
+  font-size: 14px;
+  color: var(--error-color);
+  margin-top: 2px;
+}
