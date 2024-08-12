@@ -1,5 +1,9 @@
 # Playgroud Nextjs + Firebase
 
+## URL
+
+https://playground-nextjs-firebase-8f65.vercel.app/
+
 ## 目的
 
 Nextjs で Firebase をどうのように使えるかについて学ぶ
@@ -8,7 +12,15 @@ Nextjs で Firebase をどうのように使えるかについて学ぶ
 
 css-modules
 
+## 外部ライブラリ
+
+- zod (for validation)
+
 ## Feature
 
-- ユーザー登録
+- ログイン、ログアウト、サインアップ
 - 文章投稿
+
+## Deploy
+
+Vercel
