@@ -1,9 +1,10 @@
 "use client";
 
 import Header from "@/components/basic/Header";
-import styles from "./after-login-layout.module.css";
-import { useAuth } from "../auth-provider";
 import Loading from "@/components/basic/Loading";
+
+import { useAuth } from "../auth-provider";
+import styles from "./after-login-layout.module.css";
 
 export default function AfterLoginLayout({
   children,
@@ -22,7 +23,7 @@ export default function AfterLoginLayout({
   return (
     <div className={styles.container}>
       <Header />
-      {children}
+      <div className={styles.main}>{children}</div>
     </div>
   );
 }

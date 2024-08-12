@@ -7,6 +7,7 @@
   --light-gray: #ccc;
   --gray: #777272;
   --black: #000000;
+  --border-radius: 3px;
 }
 
 body {

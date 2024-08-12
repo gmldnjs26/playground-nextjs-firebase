@@ -1,6 +1,6 @@
 "use client";
 
-import { onAuthStateChanged, User } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { usePathname, useRouter } from "next/navigation";
 import {
@@ -35,16 +35,19 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     const authorize = onAuthStateChanged(auth, async (fbUser) => {
-      if (fbUser) {
+      // ユーザーセッションがない場合はログインペ
+      if (!fbUser && !noRedirectPaths.includes(pathName)) {
+        setUser(null);
+        router.push("/auth/sign-in");
+      }
+
+      // ユーザーセッションがあルガ、ユーザー情報がない場合は取得しに行く
+      if (fbUser && !user) {
         const userDoc = doc(firestore, "users", fbUser.uid);
         const userDocSnap = await getDoc(userDoc);
         if (userDocSnap.exists()) {
           setUser({ uid: fbUser.uid, ...userDocSnap.data() } as IUser);
         }
-      }
-
-      if (!fbUser && !noRedirectPaths.includes(pathName)) {
-        router.push("/auth/sign-in");
       }
 
       setLoading(false);

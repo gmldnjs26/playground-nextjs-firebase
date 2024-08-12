@@ -1,4 +1,5 @@
 export type Post = {
+  id: string;
   writer: {
     id: string;
     name: string;

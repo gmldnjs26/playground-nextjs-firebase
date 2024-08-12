@@ -4,6 +4,7 @@ import { FirebaseError } from "firebase/app";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { z } from "zod";
@@ -82,6 +83,7 @@ export default function SignUpPage() {
       if (error instanceof FirebaseError) {
         if (error.code === firebaseErrorCodes.emailAlreadyInUse) {
           alert("既に登録されているメアドです");
+          setErrorMessages({ email: "既に登録されているメールアドレスです" });
         }
       } else if (error instanceof z.ZodError) {
         let validationErrors: { [key: string]: string } = {};
@@ -177,6 +179,9 @@ export default function SignUpPage() {
       <Button width="300px" onClick={handleRegister}>
         登録
       </Button>
+      <Link className={styles.linkButton} href="/auth/sign-in">
+        ログインはこちら
+      </Link>
     </div>
   );
 }

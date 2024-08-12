@@ -37,3 +37,11 @@
   color: var(--error-color);
   margin-top: 2px;
 }
+
+.linkButton {
+  color: var(--primary-color);
+}
+
+.linkButton:hover {
+  opacity: 0.6;
+}
