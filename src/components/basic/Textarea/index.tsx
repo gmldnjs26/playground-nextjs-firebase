@@ -1,6 +1,6 @@
 import React, { ChangeEvent } from "react";
 
-import styles from "./Textarea.module.css";
+import styles from "./textarea.module.css";
 
 type TextareaProps = {
   label?: string;

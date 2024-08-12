@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { ChangeEvent, useRef, useState } from "react";
+
 import styles from "./form-image.module.css";
 
 type FormImageProps = {

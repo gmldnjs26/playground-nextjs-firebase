@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 
-import styles from "./Button.module.css";
+import styles from "./button.module.css";
 
 type ButtonProps = {
   onClick: () => void;
