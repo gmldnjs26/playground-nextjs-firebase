@@ -1,0 +1,25 @@
+name: Lighthouse CI on Deployment
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  lighthouse_audit:
+    runs-on: ubuntu-latest
+    name: Lighthouse Audit on Deployment
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run Lighthouse Audit
+        uses: treosh/lighthouse-ci-action@v8
+        with:
+          urls: https://playground-nextjs-firebase-8f65.vercel.app
+          uploadArtifacts: true
+          temporaryPublicStorage: true
